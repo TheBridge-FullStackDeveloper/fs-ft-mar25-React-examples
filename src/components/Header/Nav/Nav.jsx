@@ -23,6 +23,9 @@ const Nav = () => {
         <li>
           <Link to="/topic">Topic</Link>
         </li>
+        <li>
+          <Link to="/wishlist">Deseos</Link>
+        </li>
       </ul>
     </nav>
   );

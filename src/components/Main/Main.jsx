@@ -6,6 +6,7 @@ import Home from "./Home";
 import Staff from "./Staff";
 import Topic from "./Topic";
 import TravelList from "./TravelList";
+import WishList from "./WishList";
 import NotFound from "./NotFound";
 
 
@@ -21,6 +22,7 @@ const Main = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/staff" element={<Staff />} />
         <Route path="/topic" element={<Topic />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </main>
