@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter } from 'react-router-dom'
+import { useContext, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -7,35 +7,31 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 
+// Importar el contexto
+import { UserContext } from "./context/UserContext";
+
 function App() {
-  const [count, setCount] = useState(4);
+
+  const [username, setUsername] = useState("tortilla");
+
+  const updateUsername = (newUsername) => {
+    setUsername(newUsername);
+  };
+
+  const userData = {
+    username,
+    updateUsername,
+  };
 
   return (
     <>
-      <BrowserRouter >
-        <Header />
-        <Main />
-      </BrowserRouter>
-      <Footer />
-
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>Welcome to React</p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <UserContext.Provider value={userData}>
+        <BrowserRouter>
+          <Header />
+          <Main />
+        </BrowserRouter>
+        </UserContext.Provider>
+        <Footer />
     </>
   );
 }

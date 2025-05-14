@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Nav from "./Nav";
 
+// Importamos el contexto
+import { UserContext } from "../../context/UserContext";
+
 const Header = () => {
-  return <header>
-          <h1>Esto es mi header</h1>
-          <Nav />
-        </header>;
+  // Consumir el contexto de usuario
+  const { username, updateUsername } = useContext(UserContext);
+  
+  // Hook para navegar entre rutas
+  const navigate = useNavigate();
+
+  const handleOnClick = () => navigate("/"); // Redirige a la home
+
+  return (
+    <header>
+      <h1>Esto es mi header</h1>
+      <Nav />
+
+      {username ? 
+        <>
+          <span>Hola, {username}</span>
+          <button onClick={() => updateUsername("")}>Logout</button>
+        </>
+       : 
+        <button onClick={handleOnClick}>Login</button>
+      }
+    </header>
+  );
 };
 
 export default Header;
