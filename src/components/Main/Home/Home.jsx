@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { UserContext } from '../../../context/UserContext'
 import reactLogo from "../../../assets/react.svg";
 
@@ -37,6 +38,11 @@ const Home = () => {
         <input type="text" value={newUsername} onChange={handleInputChange} />
         <button type="submit">Envia tu nombre</button>
       </form>
+
+      <Link to="/product/1?limit=2&sort=desc">Ver producto 1 (query incluida)</Link>
+      <br />
+      <Link to="/product/2?limit=1&sort=asc">Ver producto 2</Link>
+
     </div>
   );
 
