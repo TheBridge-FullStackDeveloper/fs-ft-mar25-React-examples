@@ -20,7 +20,7 @@ const Staff = () => {
     const renderStaff = () => pokemons.map((pokemon,i) => <Card key={i} data={pokemon} />);
 
     return (
-        <section>  
+        <section className='staff'>  
         {pokemons.length>0?renderStaff():<SpinnerRoundOutlined />}
         </section>
     );

@@ -1,0 +1,30 @@
+@use '../utils/variables' as variables;
+@use '../utils/mixins' as mixins;
+
+.nav-bar {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 70vw;
+    padding-left: 0;
+
+    &>ul{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        list-style: none;
+    }
+
+}
+
+a{
+    color:variables.$black
+}
+
+.link-day {
+    color: variables.$seasalt
+}
+
+.link-night {
+    color: variables.$seasalt
+}

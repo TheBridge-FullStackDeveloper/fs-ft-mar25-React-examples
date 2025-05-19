@@ -16,8 +16,7 @@ const Header = () => {
   const handleOnClick = () => navigate("/"); // Redirige a la home
 
   return (
-    <header>
-      <h1>Esto es mi header</h1>
+    <header className='header-day'>
       <Nav />
 
       {username ? 

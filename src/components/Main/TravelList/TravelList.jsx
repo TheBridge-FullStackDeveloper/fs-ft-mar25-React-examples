@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
+import { TextField, Button } from "@mui/material";
 import TravelItem from "./TravelItem";
 import data from "./data.js";
+import Box from "@mui/material/Box";
 
 const TravelList = () => {
   // const datos = [
@@ -42,7 +44,7 @@ const TravelList = () => {
     title: "",
     description: "",
     price: 0,
-    img_url: ""
+    img_url: "",
   });
 
   const inputRef = useRef(""); // esta referencia será un string vacío al principio
@@ -69,10 +71,10 @@ const TravelList = () => {
     setItems(remainingItems);
   };
   const addItem = (new_item) => {
-    setItems([...items,new_item]);
-  }
+    setItems([...items, new_item]);
+  };
   // Tarea
-  const editItem = (i,new_item) => {}
+  const editItem = (i, new_item) => {};
 
   const handleChange = (e) => {
     setValues({
@@ -96,40 +98,74 @@ const TravelList = () => {
     <TravelItem data={datos[2]}/>
     <TravelItem data={datos[3]}/> */}
 
-      
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Título</label><br />
-        <input type="text" name="title" onChange={handleChange} /><br />
+        <label htmlFor="name">Título</label>
+        <br />
+        <input type="text" name="title" onChange={handleChange} />
+        <br />
 
-        <label htmlFor="description">Description</label><br />
-        <input type="text" name="description" onChange={handleChange} /><br />
+        <label htmlFor="description">Description</label>
+        <br />
+        <input type="text" name="description" onChange={handleChange} />
+        <br />
 
-        <label htmlFor="price">Precio</label><br />
-        <input type="number" name="price" onChange={handleChange} /><br />
+        <label htmlFor="price">Precio</label>
+        <br />
+        <input type="number" name="price" onChange={handleChange} />
+        <br />
 
-        <label htmlFor="url">URL imagen</label><br />
-        <input type="url" name="img_url" onChange={handleChange} /><br />
-       
-       {values.title && values.description && values.price>0 && values.img_url ?
-       <button type="submit">Crear destino</button>:
-       <b>Rellena todos los campos para poder enviar</b>
-       }
-       
-        
-        
+        <label htmlFor="url">URL imagen</label>
+        <br />
+        <input type="url" name="img_url" onChange={handleChange} />
+        <br />
+
+        {values.title &&
+        values.description &&
+        values.price > 0 &&
+        values.img_url ? (
+          <button type="submit">Crear destino</button>
+        ) : (
+          <b>Rellena todos los campos para poder enviar</b>
+        )}
       </form>
 
       {paintData()}
-      <button onClick={removeAllItems}>Borrar todo</button>
+      {/* <button onClick={removeAllItems}>Borrar todo</button>
       <button onClick={resetItems}>Recargar</button>
-      <button onClick={() => removeItem(1)}>Borrar un elemento</button>
-    
-    <h2>Introduce tu email para mandar info</h2>
-    <div>
-      <input type="text" ref={inputRef} />
-      <button onClick={handleButtonClick}>Enviar</button>
-    </div>
-    
+      <button onClick={() => removeItem(1)}>Borrar un elemento</button> */}
+
+      <Box sx={{ "& button": { m: 1 } }}>
+        <div>
+          <Button onClick={removeAllItems} variant="contained" size="small">
+            Borrar todo
+          </Button>
+          <Button onClick={resetItems} variant="contained" size="small">
+            Recargar
+          </Button>
+          <Button
+            onClick={() => removeItem(1)}
+            variant="contained"
+            size="small"
+          >
+            Borrar un elemento
+          </Button>
+        </div>
+      </Box>
+
+      <h2>Introduce tu email para mandar info</h2>
+      <div>
+        {/* <input type="text" ref={inputRef} />
+      <button onClick={handleButtonClick}>Enviar</button> */}
+        <TextField
+          id="outlined-basic"
+          label="Standard"
+          variant="standard"
+          inputRef={inputRef}
+        />
+        <Button onClick={handleButtonClick} variant="contained" color="success">
+          Enviar
+        </Button>
+      </div>
     </section>
   );
 };
